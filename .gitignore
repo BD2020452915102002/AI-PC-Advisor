@@ -1,0 +1,139 @@
+# Dependencies
+/node_modules
+/.pnp
+.pnp.js
+.yarn/install-state.gz
+**/node_modules/
+**/package-lock.json
+**/yarn.lock
+**/.pnp.*
+
+# Testing
+/coverage
+**/coverage/
+**/.nyc_output
+**/test-results/
+
+# Production
+/build
+/dist
+**/build/
+**/dist/
+**/out/
+**/.output/
+
+# Misc
+.DS_Store
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+**/.env
+**/.env.*
+!**/.env.example
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+logs
+*.log
+**/logs/
+**/*.log
+
+# Editor directories and files
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+**/.idea/
+**/.vscode/
+**/*.suo
+**/*.ntvs*
+**/*.njsproj
+**/*.sln
+**/*.sw?
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Python (nếu có sử dụng)
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+ENV/
+**/__pycache__/
+**/*.py[cod]
+**/*$py.class
+**/*.so
+**/.Python
+**/venv/
+**/ENV/
+**/.pytest_cache/
+
+# Jupyter Notebook (nếu có sử dụng)
+.ipynb_checkpoints
+**/.ipynb_checkpoints
+
+# Cache
+.cache/
+.next/
+.nuxt/
+.tmp/
+.temp/
+.cursor/rules
+**/.cache/
+**/.next/
+**/.nuxt/
+**/.tmp/
+**/.temp/
+
+# Docker
+**/.docker/
+**/docker-compose.override.yml
+
+# Service specific
+**/tmp/
+**/temp/
+**/.serverless/
+**/.webpack/
+**/.terraform/
+**/.terragrunt-cache/
+**/terraform.tfstate*
+**/.dynamodb/
+
+# Generated assets
+**/generated/
+**/dist-types/
+
+# Local services data
+**/data/
+**/.data/
+**/localstack/
+
+# CI/CD artifacts
+**/.github/workflows/local-*
+**/.gitlab/local-*
+**/.circleci/local-*
+
+# Mobile development
+**/ios/Pods/
+**/android/app/build/
+**/android/.gradle/
+**/.gradle/
+**/fastlane/report.xml
+**/xcuserdata/
+**/DerivedData/

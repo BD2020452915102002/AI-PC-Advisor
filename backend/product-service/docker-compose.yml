@@ -1,0 +1,70 @@
+version: '3.8'
+
+services:
+  product-service:
+    build: .
+    image: ai-pc-advisor/product-service
+    container_name: product-service
+    restart: unless-stopped
+    env_file: .env
+    ports:
+      - "3002:3002"
+    depends_on:
+      - product-db
+      - redis
+      - rabbitmq
+    networks:
+      - ai-pc-advisor-network
+    volumes:
+      - ./logs:/usr/src/app/logs
+
+  product-db:
+    image: postgres:15-alpine
+    container_name: product-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${DB_NAME:-product_service_db}
+      POSTGRES_USER: ${DB_USER:-postgres}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-postgres}
+    ports:
+      - "5432:5432"
+    volumes:
+      - product-db-data:/var/lib/postgresql/data
+    networks:
+      - ai-pc-advisor-network
+
+  redis:
+    image: redis:7-alpine
+    container_name: product-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    networks:
+      - ai-pc-advisor-network
+
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    container_name: product-rabbitmq
+    restart: unless-stopped
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: ${RABBITMQ_USER:-guest}
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PASSWORD:-guest}
+    volumes:
+      - rabbitmq-data:/var/lib/rabbitmq
+    networks:
+      - ai-pc-advisor-network
+
+networks:
+  ai-pc-advisor-network:
+    name: ai-pc-advisor-network
+    driver: bridge
+
+volumes:
+  product-db-data:
+  redis-data:
+  rabbitmq-data: 
